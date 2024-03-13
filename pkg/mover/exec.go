@@ -2,6 +2,7 @@ package mover
 
 import (
 	"bytes"
+	"context"
 	"io"
 	"os"
 
@@ -39,7 +40,7 @@ func (m *MoverJob) Exec(pod v1.Pod, config *rest.Config, cmd []string, input io.
 			}
 		}
 	}()
-	err = exec.Stream(remotecommand.StreamOptions{
+	err = exec.StreamWithContext(context.TODO(), remotecommand.StreamOptions{
 		Stdin:  input,
 		Stdout: output,
 		Stderr: os.Stdout,

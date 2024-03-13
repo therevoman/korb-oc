@@ -11,7 +11,6 @@ import (
 
 	batchv1 "k8s.io/api/batch/v1"
 	corev1 "k8s.io/api/core/v1"
-	v1 "k8s.io/api/core/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/client-go/kubernetes"
 )
@@ -110,11 +109,11 @@ func (m *MoverJob) Start() *MoverJob {
 						{
 							Name:            ContainerName,
 							Image:           config.ContainerImage,
-							ImagePullPolicy: v1.PullAlways,
-							// Args:            []string{string(m.mode)},
-							VolumeMounts: mounts,
-							TTY:          true,
-							Stdin:        true,
+							ImagePullPolicy: corev1.PullAlways,
+							Args:            []string{string(m.mode)},
+							VolumeMounts:    mounts,
+							TTY:             true,
+							Stdin:           true,
 							// Command:      strings.Split("rsync -axHAX -O --progress /source/ /dest", " "),
 							// Args:         []string{"ls -alZ /source /dest", "rsync -aHA -O --progress /source/ /dest"},
 							// Command:      strings.Split("sh -c", " "),
@@ -151,7 +150,7 @@ func (m *MoverJob) Start() *MoverJob {
 	return m
 }
 
-func (m *MoverJob) followLogs(pod v1.Pod) {
+func (m *MoverJob) followLogs(pod corev1.Pod) {
 	req := m.kClient.CoreV1().Pods(m.Namespace).GetLogs(pod.Name, &corev1.PodLogOptions{
 		Follow:    true,
 		Container: ContainerName,
