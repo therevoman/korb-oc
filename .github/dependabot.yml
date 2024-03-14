@@ -7,7 +7,7 @@ updates:
     time: "04:00"
   open-pull-requests-limit: 10
   assignees:
-  - BeryJu
+  - therevoman
 - package-ecosystem: gomod
   directory: "/"
   schedule:
@@ -15,7 +15,7 @@ updates:
     time: "04:00"
   open-pull-requests-limit: 10
   assignees:
-  - BeryJu
+  - therevoman
 - package-ecosystem: docker
   directory: "/mover"
   schedule:
@@ -23,4 +23,4 @@ updates:
     time: "04:00"
   open-pull-requests-limit: 10
   assignees:
-  - BeryJu
+  - therevoman

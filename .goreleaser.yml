@@ -10,7 +10,7 @@ builds:
   flags:
     - -trimpath
   ldflags:
-    - '-s -w -X beryju.org/korb/cmd.Version={{.Version}}'
+    - '-s -w -X revoweb.com/korb-oc/cmd.Version={{.Version}}'
   goos:
     - freebsd
     - windows
@@ -38,11 +38,11 @@ brews:
   - ids:
       - raw
     repository:
-      owner: beryju
+      owner: therevoman
       name: homebrew-tap
     commit_author:
       name: goreleaserbot
-      email: goreleaser@beryju.org
-    homepage: 'https://github.com/beryju/korb'
+      email: goreleaser@revoweb.com
+    homepage: 'https://github.com/therevoman/korb-oc'
     description: 'Move Kubernetes PVCs between Storage Classes and Namespaces'
     folder: Formula
